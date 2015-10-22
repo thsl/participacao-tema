@@ -1,44 +1,107 @@
-<div class="col-md-4">
-    <?php if ( is_active_sidebar( 'sidebar_widgets' ) ) : ?>
-        <?php dynamic_sidebar( 'sidebar_widgets' ); ?>
-    <?php endif; ?>
+<?php if (is_active_sidebar('sidebar_widgets')) : ?>
+    <?php dynamic_sidebar('sidebar_widgets'); ?>
+<?php endif; ?>
+
+
+<section class="pensando-videos mt-lg">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <header>
+                <h2><a href="#">Videos</a></h2>
+            </header>
+            <section class="embed-responsive embed-responsive-16by9 mt-sm">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/G7THEcKWCwo"
+                        frameborder="0"
+                        allowfullscreen></iframe>
+            </section>
+            <section class="video-description">
+                <h3>
+                    <a href="#">Ana Gabriela Braga fala sobre a pesquisa “Dar à luz na sombra”</a>
+                </h3>
+
+                <p>
+                    A doutora em criminologia e professora da Unesp, traz um diagnóstico sobre
+                    políticas públicas para as mulheres presas no país cujo direito de ser mãe
+                    muitas vezes é violado
+                </p>
+
+                <p><a href="#" class="fontsize-sm">Pensando o Direito no <i
+                            class="fa fa-youtube"></i> youtube</a></p>
+            </section>
+        </div>
+    </div>
+</section>
+<section class="custom-box">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="red font-roboto">Mais notícias:</h4>
         </div>
 
         <div class="panel-body">
-            <?php
-            $mais_noticias = new WP_Query(
-            array(
-            'post_type' => array('post'),
-            'posts_per_page' => 5,
-            'post__not_in' => array(get_the_ID())
-            )
-            );
-            while ($mais_noticias->have_posts()) {
-            $mais_noticias->the_post();
-            ?>
-            <div class="row mb-md">
-                <div class="col-xs-5">
-                    <?php
-                    if (has_post_thumbnail() ) {
-                    the_post_thumbnail('noticia-lista', array('class' => "img-adptive"));
-                    }
-                    ?>
-                </div>
-                <div class="col-xs-7 pl-0">
-                    <p class="h6 red mt-0">
-                        <strong>
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </strong>
-                    </p>
-                </div>
-            </div>
-            <?php
-            }
-            wp_reset_query();
-            ?>
+            <section class="noticias">
+                <ul class="not-list list-unstyled">
+                    <li>
+                        <article class="not-fill">
+                            <div class="not-text">
+                                <header class="not-titulo">
+                                    <h3>
+                                        <a href="#">Senado Federal aprovou o projeto que cria uma nova Lei de
+                                            Migração para o país</a>
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="not-fill">
+                            <div class="not-text">
+                                <header class="not-titulo">
+                                    <h3>
+                                        <a href="#">Pesquisas empíricas em direito do projeto Pensando o
+                                            Direito</a>
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="not-fill">
+                            <div class="not-text">
+                                <header class="not-titulo">
+                                    <h3>
+                                        <a href="#">Rosana Denaldi fala sobre a pesquisa PEUC e IPTU progressivo
+                                            no tempo</a>
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="not-fill">
+                            <div class="not-text">
+                                <header class="not-titulo">
+                                    <h3>
+                                        <a href="#">Pesquisas empíricas em direito do projeto Pensando o
+                                            Direito</a>
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="not-fill">
+                            <div class="not-text">
+                                <header class="not-titulo">
+                                    <h3>
+                                        <a href="#">Rosana Denaldi fala sobre a pesquisa PEUC e IPTU progressivo
+                                            no tempo</a>
+                                    </h3>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </section>
         </div>
     </div>
-</div>
+</section>

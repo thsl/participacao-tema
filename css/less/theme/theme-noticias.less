@@ -1,4 +1,4 @@
-@import "../../../participacao-tema/css/less/elements.less";
+@import "../elements.less";
 
 // Tabs
 // -------------------------
@@ -38,7 +38,6 @@
           border: 0;
           border-bottom-color: transparent;
           cursor: default;
-          color: #fff;
         }
       }
     }
@@ -66,8 +65,8 @@
   .not-list {
     li {
       border-bottom: 1px dashed #cecece;
-      margin: 0px 0px 10px 0px;
-      padding: 0px 0px 10px 0px;
+      margin: 0 0 15px 0;
+      padding: 0 0 15px 0;
     }
     .not-fill {
       .clearfix();
@@ -128,6 +127,25 @@
       }
     }
   }
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0;
+  }
+  .noticias-internas {
+    padding-right: 25px;
+    @media (min-width: @screen-sm) {
+      padding-right: 0;
+    }
+    font-size: 15px;
+    line-height: 1.4;
+    p {
+      margin: 20px 0;
+    }
+    .not-sutien {
+      color: #636363;
+      font-weight: 700;
+      margin-top: 20px;
+    }
+  }
 }
 
 .pensando-videos {
@@ -140,15 +158,15 @@
   }
   header {
     h2, a {
-      margin: 0px;
+      margin: 0;
       font-size: 15px;
       color: @color-vermelho-pd;
       font-family: @font-family-roboto;
       font-weight: 700;
     }
   }
-  .video-description{
-    h3{
+  .video-description {
+    h3 {
       a {
         font-size: 15px;
         font-weight: 700;
@@ -161,8 +179,7 @@
   }
 }
 
-
-.agenda {
+.custom-box {
   .panel.panel-default {
     border: 1px solid #c4c4c4;
     box-shadow: none;
@@ -172,33 +189,25 @@
   .panel-heading {
     padding: 15px !important;
     border-bottom: 1px solid #c4c4c4 !important;
-    background: rgba(255,255,255,1);
-    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(243,243,243,1)));
-    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
-    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
-    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(243,243,243,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3f3f3', GradientType=0 );
+    background: rgba(255, 255, 255, 1);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(243, 243, 243, 1)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 100%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(243, 243, 243, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f3f3f3', GradientType=0);
     h2 {
-      margin: 0px;
+      margin: 0;
       font-size: 18px;
       color: @text-color-red;
       font-family: @font-family-roboto;
       font-weight: normal;
     }
-
   }
-  .agenda-description{
-    h3{
-      a {
-        font-size: 15px;
-        font-weight: 700;
-        color: @color-vermelho-pd;
-        &:hover {
-          color: @text-color-red;
-        }
-      }
+  .noticias{
+    .not-titulo{
+      line-height: 1em;
     }
   }
 }
