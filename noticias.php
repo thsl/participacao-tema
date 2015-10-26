@@ -1,91 +1,190 @@
-<?php
-/**
- * Template Name: Notícias
- */
-get_header();
-
-global $wp_query;
-$categorias = array();
-
-$todas_categorias = get_categories(
-    array('taxonomy' => 'category', 'hide_empty' => 1)
-);
-
-foreach ($todas_categorias as $category) {
-    if (!preg_match('/^_apagar\w*/', $category->name)
-        && $category->name != 'Sem categoria'
-        && $category->name != '*RECATEGORIZAR'
-    ) {
-        $categorias[$category->slug] = $category->name;
-    }
-}
-
-$categoria_atual = 'Todas';
-$args = $wp_query->query_vars;
-
-if (get_query_var('category_name') != 'geral') {
-    foreach ($categorias as $slug => $nome) {
-        if ($slug == $wp_query->query_vars['category_name']) {
-            $categoria_atual = $nome;
-            $args['category_name'] = $slug; //$wp_query->query_vars['categoria'];
-        }
-    }
-} else {
-    unset($args['category_name']);
-}
-?>
-<div class="noticias container">
-    <div class="row">
-        <div class="col-md-12">
-        <h2 class="font-roboto red pull-left">Notícias <small>: <?php echo $categoria_atual; ?></small></h2>
-        <div class="dropdown pull-right">
-          <button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-            Filtrar notícia por categoria <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <?php
-            foreach ($categorias as $category) { ?>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo "/noticias/" . sanitize_title($category); ?>"><?php echo $category; ?></a></li>
-            <?php } ?>
-            <li class="divider"></li>
-            <li><a href="/noticias">Todas</a></li>
-          </ul>
+<?php get_header(); ?>
+<div class="noticias-all">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="font-roboto red">Notícias</h1>
+            </div>
         </div>
-       </div>
-   </div>
-    <div class="row ordinarynews">
-            <?php
-            $ordinary_news = new WP_Query($args);
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="header-categories">
+                    <ul class="list-inline list-categories">
+                        <li class="categories-master">
+                            <a href="#" class="categorie-link">Todas</a>
+                        </li>
+                        <li class="categories-master">
+                            <a href="#" class="categorie-link active-box">Assuntos legislativos</a>
+                        </li>
+                        <li class="categories-master">
+                            <a href="#" class="categorie-link">Debates públicos</a>
+                        </li>
+                        <li class="categories-master">
+                            <a href="#" class="categorie-link">Editais</a>
+                        </li>
+                        <li class="categories-master">
+                            <a href="#" class="categorie-link">Vídeos</a>
+                        </li>
+                        <li class="dropdown categories-master">
+                            <a href="#" class="categorie-link" id="menu-mais" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Mais <i class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="menu-mais">
+                                <li class="categories-master">
+                                    <a href="#" class="categorie-link">Por data</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-md">
+            <div class="col-md-7">
+                <section class="noticias">
+                    <ul class="not-list list-unstyled">
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#"> Pesquisas empíricas em direito
+                                                do projeto Pensando o Direito</a>
+                                        </h3>
+                                    </header>
+                                    <p>
+                                        O Projeto Pensando o Direito já publicou mais de 55 volumes e é um dos
+                                        grandes
+                                        indutores da pesquisa empírica em Direito no Brasil. Os coordenadores dos
+                                        estudos
+                                        são selecionados por meio de chamadas públicas divulgadas aqui no portal.
+                                    </p>
 
-            if ( $ordinary_news->have_posts() ) {
-            ?>
-                <script>
-                    <?php if (isset($args['category_name'])) { ?>
-                        var categoriaAtual = "<?php echo $args['category_name']; ?>";
-                    <?php } ?>
-                </script>
-                <?php
+                                    <p class="not-tag"><a href="#">Pesquisas</a></p>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Senado Federal aprovou o projeto que cria uma nova Lei de
+                                                Migração para o país</a>
+                                        </h3>
+                                    </header>
+                                    <p class="not-tag"><a href="#">Pesquisas</a>, <a href="#">Entrevistas</a></p>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill has-image">
+                                <div class="not-image">
+                                    <img
+                                        src="<?php echo get_stylesheet_directory_uri(); ?>/images/foto-destaque.jpg"
+                                        class="img-adptive"/>
+                                </div>
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Rosana Denaldi fala sobre a pesquisa PEUC e IPTU progressivo
+                                                no tempo</a>
+                                        </h3>
+                                    </header>
+                                    <p>
+                                        O Projeto Pensando o Direito já publicou mais de 55 volumes e é um dos
+                                        grandes
+                                        indutores da pesquisa empírica em Direito no Brasil. Os coordenadores dos
+                                        estudos
+                                        são selecionados por meio de chamadas públicas divulgadas aqui no portal.
+                                    </p>
 
-                while ($ordinary_news->have_posts()) {
-                    $ordinary_news->the_post();
-                    get_template_part('content', 'archive');
-                }
-            } else {
-                echo 'Nenhuma notícia encontrada.';
-            }
-            ?>
+                                    <p class="not-tag"><a href="#">Pesquisas</a>, <a href="#">Entrevistas</a></p>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Pesquisas empíricas em direito do projeto Pensando o
+                                                Direito</a>
+                                        </h3>
+                                    </header>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Rosana Denaldi fala sobre a pesquisa PEUC e IPTU progressivo
+                                                no tempo</a>
+                                        </h3>
+                                    </header>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Pesquisas empíricas em direito do projeto Pensando o
+                                                Direito</a>
+                                        </h3>
+                                    </header>
+                                </div>
+                            </article>
+                        </li>
+                        <li>
+                            <article class="not-fill">
+                                <div class="not-text">
+                                    <header class="not-titulo">
+                                        <h3>
+                                            <a href="#">Rosana Denaldi fala sobre a pesquisa PEUC e IPTU progressivo
+                                                no tempo</a>
+                                        </h3>
+                                    </header>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col-md-5">
+                <section class="pensando-videos">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <header>
+                                <h2><a href="#">Videos</a></h2>
+                            </header>
+                            <section class="embed-responsive embed-responsive-16by9 mt-sm">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/G7THEcKWCwo"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </section>
+                            <section class="video-description">
+                                <h3>
+                                    <a href="#">Ana Gabriela Braga fala sobre a pesquisa “Dar à luz na sombra”</a>
+                                </h3>
+
+                                <p>
+                                    A doutora em criminologia e professora da Unesp, traz um diagnóstico sobre
+                                    políticas públicas para as mulheres presas no país cujo direito de ser mãe
+                                    muitas vezes é violado
+                                </p>
+
+                                <p><a href="#" class="fontsize-sm">Pensando o Direito no <i
+                                            class="fa fa-youtube"></i> youtube</a></p>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
-    <?php
-      if (get_query_var('paged') < $ordinary_news->max_num_pages && $ordinary_news->max_num_pages > 1) {
-    ?>
-        <div class="row text-center mt-lg">
-            <button id="mais-noticias" type="button" class="btn btn-danger" onclick="carregar_noticias('.container .ordinarynews', '<?php echo $ordinary_news->max_num_pages; ?>');">Mostrar mais notícias</button>
-        </div>
-    <?php
-      }
-    ?>
 </div>
-<?php
-    get_footer();
-?>
+<?php get_footer(); ?>
 
